@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project App</title>
+    <title>Disc Golf</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
+    <%= render "shared/navbar" %>
+
     <main role="main" class="container">
 
       <% flash.each do |key, message| %>
@@ -26,4 +30,7 @@
 
     </main>
   </body>
+
+
+  
 </html>

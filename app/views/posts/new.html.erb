@@ -1,0 +1,23 @@
+<h1>Create A Post</h1>
+
+
+<%= bootstrap_form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+
+	<div class="row">
+		<div class="col">
+        	<%= f.text_field :text, label: "Enter Post Message"  %>
+            <%= f.file_field :image, label: "Upload your photo*"  %>
+		</div>	
+        <div class="col">
+            <%= f.select :subject, ['Course', 'Obstruction', 'Score', 'Lost Disc', 'Looking For Group', 'Other'] %>
+            <%= f.collection_select :course_id,@courses, :id, :name %>
+        </div>
+    </div> 
+
+
+    <%= f.submit "Confrim My Post", style: "btn btn-primary" %>
+<% end %>
+
+
+
+<%= link_to "Cancel", user_path(@user), class: "btn btn-danger", style: "margin-top: 1vh" %>

@@ -1,0 +1,54 @@
+<h1>Create A New Wing Watcher's Post</h1>
+
+<%= bootstrap_form_with model: @comment, url: comments_path, method: :post, local: true do |f| %>
+		<div class="col-md-8  snippets">
+
+		<div class="panel-body">
+			<div class="media-block pad-all">
+			<a class="media-left" href="#"><%= image_tag(@post.user.image_url, class: 'img-circle img-sm')  %></a>
+			<div class="media-body">
+				<div class="mar-btm">
+				<a href="#" class="btn-link text-semibold media-heading box-inline"><%= @post.user.username %></a>
+				<p class="text-muted text-sm"><i class="fa fa-lg"></i> <%= @post.subject %> : <%= time_ago_in_words(@post.created_at) %><% if @post.course.present? %>  | <%= link_to @post.course.name, course_path(@post.course)%> <% end %></p>
+				</div>
+				<p><%= @post.text %></p>
+				<% if @post.image.present? %>
+					<%= image_tag(@post.image_url, class: "img-responsive thumbnail") %>
+				<% end %>
+				<div class="pad-ver">
+				</div>
+				<hr>
+
+				<!-- Comments -->
+				<% @post.comments.each do |comment| %>
+				<% if comment.user.present?  %>
+				<div>
+				<div class="media-block pad-all">
+					<a class="media-left" href="#"><%= image_tag(comment.user.image_url, class: 'img-circle img-sm')  %></a>
+					<div class="media-body">
+					<div class="mar-btm">
+						<a class="btn-link text-semibold media-heading box-inline">  <%= comment.user.username %></a>
+						<p class="text-muted text-sm"><i class="fa fa-lg"></i>  <%= time_ago_in_words(comment.created_at) %></p>
+					</div>
+					<p><%= comment.text %></p>
+					<div>
+					</div>
+					</div>
+				</div>
+				</div>
+				<% end %>
+				<% end %>
+			</div>
+			</div>
+		</div>
+
+	<div class="row">
+		<div class="col">
+        	<%= f.text_field :text, label: "Enter Comment Message"  %>
+		</div>	
+    </div> 
+
+    <%= f.submit "Confrim My Comment", style: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Cancel", home_path, class: "btn btn-danger", style: "margin-top: 1vh" %>

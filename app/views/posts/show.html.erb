@@ -1,0 +1,12 @@
+
+<div class="card" style="">
+  <div class="card-header">
+    <h1><%= @post.user.username %> : <%= @post.text %></h1>
+  </div>
+  <ul class="list-group list-group-flush">
+	<% @comments.each do |comment| %>
+		<li class="list-group-item"><%= comment.user.username %> : <%= comment.text %></li>
+	<% end %>
+  </ul>
+</div>
+<a><%= link_to 'Comment', new_comment_path(@user, @post), class: 'btn btn-primary'%></a>

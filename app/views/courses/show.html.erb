@@ -1,0 +1,220 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+.row {
+	max-height: 30vh;
+}
+
+.col {
+	max-height: 30vh;
+	overflow: scroll;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: auto;
+	max-height: 23vh;
+}
+</style>
+
+
+<div class='row'>
+	<div class='col'>	
+		<h1><%= @course.name %></h1>
+		<h3><%= @course.address %></h3>
+		<% if @course.length == 9 %>
+			<h4><%= @course.h1 %> | <%= @course.h2 %> | <%= @course.h3 %> | <%= @course.h4 %> | <%= @course.h5 %> | <%= @course.h6 %> | <%= @course.h7 %> | <%= @course.h8 %> | <%= @course.h9 %></h4>
+		<% else %>
+			<h4><%= @course.h1 %> | <%= @course.h2 %> | <%= @course.h3 %> | <%= @course.h4 %> | <%= @course.h5 %> | <%= @course.h6 %> | <%= @course.h7 %> | <%= @course.h8 %> | <%= @course.h9 %> | <%= @course.h10 %> | <%= @course.h11 %> | <%= @course.h12 %> | <%= @course.h13 %> | <%= @course.h14 %> | <%= @course.h15 %> | <%= @course.h16 %> | <%= @course.h17 %> | <%= @course.h18 %></h4>
+		<% end %>
+	</div>
+	<div class='col'>
+		<%= image_tag(@course.image_url, style: "max-width: 15vw; max-heigh: 15vh",class: 'rounded float-right') %>
+	</div>
+	<%# ?? availability %>
+</div>
+<div class='row'>
+	<div class="col border border-dark overflow-scroll">
+		<div class="panel-body"> 
+		<% @posts.where(subject: 'Score').each do |post| %>
+			<div class="media-block pad-all">
+			<a class="media-left" href="#"><%= image_tag(post.user.image_url, class: 'img-circle img-sm')  %></a>
+			<div class="media-body">
+				<div class="mar-btm">
+				<a href="#" class="btn-link text-semibold media-heading box-inline"><%= post.user.username %></a>
+				<p class="text-muted text-sm"><i class="fa fa-lg"></i> <%= post.subject %> : <%= time_ago_in_words(post.created_at) %></p>
+				</div>
+				<p><%= post.text %></p>
+				<% if post.image.present? %>
+					<%= image_tag(post.image_url, class: "img-responsive thumbnail") %>
+				<% end %>
+				<div class="pad-ver">
+				<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+				</div>
+				<hr>
+
+				<!-- Comments -->
+				<% post.comments.each do |comment| %>
+				<div>
+				<div class="media-block pad-all">
+					<a class="media-left" href="#"><%= image_tag(comment.user.image_url, class: 'img-circle img-sm')  %></a>
+					<div class="media-body">
+					<div class="mar-btm">
+						<a class="btn-link text-semibold media-heading box-inline">  <%= comment.user.username %></a>
+						<p class="text-muted text-sm"><i class="fa fa-lg"></i>  <%= time_ago_in_words(comment.created_at) %></p>
+					</div>
+					<p><%= comment.text %></p>
+					<div>
+						<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+					</div>
+					</div>
+				</div>
+				</div>
+				<% end %>
+			</div>
+			</div>
+		<% end %>
+		</div>
+	</div>
+
+	<div class="col border border-dark">
+		<div class="panel-body ">
+		<% @posts.where(subject: 'Lost Disc').each do |post| %>
+			<div class="media-block pad-all">
+			<a class="media-left" href="#"><%= image_tag(post.user.image_url, class: 'img-circle img-sm')  %></a>
+			<div class="media-body">
+				<div class="mar-btm">
+				<a href="#" class="btn-link text-semibold media-heading box-inline"><%= post.user.username %></a>
+				<p class="text-muted text-sm"><i class="fa fa-lg"></i> <%= post.subject %> : <%= time_ago_in_words(post.created_at) %></p>
+				</div>
+				<p><%= post.text %></p>
+				<% if post.image.present? %>
+					<%= image_tag(post.image_url, class: "img-responsive thumbnail") %>
+				<% end %>
+				<div class="pad-ver">
+				<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+				</div>
+				<hr>
+
+				<!-- Comments -->
+				<% post.comments.each do |comment| %>
+				<div>
+				<div class="media-block pad-all">
+					<a class="media-left" href="#"><%= image_tag(comment.user.image_url, class: 'img-circle img-sm')  %></a>
+					<div class="media-body">
+					<div class="mar-btm">
+						<a class="btn-link text-semibold media-heading box-inline">  <%= comment.user.username %></a>
+						<p class="text-muted text-sm"><i class="fa fa-lg"></i>  <%= time_ago_in_words(comment.created_at) %></p>
+					</div>
+					<p><%= comment.text %></p>
+					<div>
+						<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+					</div>
+					</div>
+				</div>
+				</div>
+				<% end %>
+			</div>
+			</div>
+		<% end %>
+		</div>
+	</div>
+</div>
+<div class='row'>
+<div class="border border-dark col overflow-auto ">
+<div class="bootstrap snippets">
+    <div class="panel-body"> 
+	<% @posts.where(subject: 'Obstruction').each do |post| %>
+		<div class="media-block pad-all">
+		<a class="media-left" href="#"><%= image_tag(post.user.image_url, class: 'img-circle img-sm')  %></a>
+		<div class="media-body">
+			<div class="mar-btm">
+			<a href="#" class="btn-link text-semibold media-heading box-inline"><%= post.user.username %></a>
+			<p class="text-muted text-sm"><i class="fa fa-lg"></i> <%= post.subject %> : <%= time_ago_in_words(post.created_at) %></p>
+			</div>
+			<p><%= post.text %></p>
+			<% if post.image.present? %>
+				<%= image_tag(post.image_url, class: "img-responsive thumbnail") %>
+			<% end %>
+			<div class="pad-ver">
+			<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+			</div>
+			<hr>
+
+			<!-- Comments -->
+			<% post.comments.each do |comment| %>
+			<div>
+			<div class="media-block pad-all">
+				<a class="media-left" href="#"><%= image_tag(comment.user.image_url, class: 'img-circle img-sm')  %></a>
+				<div class="media-body">
+				<div class="mar-btm">
+					<a class="btn-link text-semibold media-heading box-inline">  <%= comment.user.username %></a>
+					<p class="text-muted text-sm"><i class="fa fa-lg"></i>  <%= time_ago_in_words(comment.created_at) %></p>
+				</div>
+				<p><%= comment.text %></p>
+				<div>
+					<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+				</div>
+				</div>
+			</div>
+			</div>
+			<% end %>
+		</div>
+		</div>
+	<% end %>
+  	</div>
+</div>
+</div>
+<div class="border border-dark col overflow-scroll">
+<div class="bootstrap snippets">
+    <div class="panel-body">
+	<% @posts.where(subject: 'Looking For Group').each do |post| %>
+		<div class="media-block pad-all">
+		<a class="media-left" href="#"><%= image_tag(post.user.image_url, class: 'img-circle img-sm')  %></a>
+		<div class="media-body">
+			<div class="mar-btm">
+			<a href="#" class="btn-link text-semibold media-heading box-inline"><%= post.user.username %></a>
+			<p class="text-muted text-sm"><i class="fa fa-lg"></i> <%= post.subject %> : <%= time_ago_in_words(post.created_at) %></p>
+			</div>
+			<p><%= post.text %></p>
+			<% if post.image.present? %>
+				<%= image_tag(post.image_url, class: "img-responsive thumbnail") %>
+			<% end %>
+			<div class="pad-ver">
+			<% if user_signed_in? %>
+			<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+			<% end %>
+			</div>
+			<hr>
+
+			<!-- Comments -->
+			<% post.comments.each do |comment| %>
+			<div>
+			<div class="media-block pad-all">
+				<a class="media-left" href="#"><%= image_tag(comment.user.image_url, class: 'img-circle img-sm')  %></a>
+				<div class="media-body">
+				<div class="mar-btm">
+					<a class="btn-link text-semibold media-heading box-inline">  <%= comment.user.username %></a>
+					<p class="text-muted text-sm"><i class="fa fa-lg"></i>  <%= time_ago_in_words(comment.created_at) %></p>
+				</div>
+				<p><%= comment.text %></p>
+				<div>
+					<% if user_signed_in? %>
+					<%= link_to 'Comment', new_comment_path(post.user, post), class: 'btn btn-sm btn-default btn-hover-primary' %>
+					<% end %>
+				</div>
+				</div>
+			</div>
+			</div>
+			<% end %>
+		</div>
+		</div>
+	<% end %>
+  	</div>
+</div>
+</div>
+</div>
+

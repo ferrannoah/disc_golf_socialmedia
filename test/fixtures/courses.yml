@@ -1,0 +1,76 @@
+# == Schema Information
+#
+# Table name: courses
+#
+#  id         :bigint           not null, primary key
+#  address    :string
+#  h1         :integer          default(3)
+#  h10        :integer          default(3)
+#  h11        :integer          default(3)
+#  h12        :integer          default(3)
+#  h13        :integer          default(3)
+#  h14        :integer          default(3)
+#  h15        :integer          default(3)
+#  h16        :integer          default(3)
+#  h17        :integer          default(3)
+#  h18        :integer          default(3)
+#  h2         :integer          default(3)
+#  h3         :integer          default(3)
+#  h4         :integer          default(3)
+#  h5         :integer          default(3)
+#  h6         :integer          default(3)
+#  h7         :integer          default(3)
+#  h8         :integer          default(3)
+#  h9         :integer          default(3)
+#  image      :string
+#  length     :integer          default(18)
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  address: MyString
+  length: 1
+  h1: 1
+  h2: 1
+  h3: 1
+  h4: 1
+  h5: 1
+  h6: 1
+  h7: 1
+  h8: 1
+  h9: 1
+  h10: 1
+  h11: 1
+  h12: 1
+  h13: 1
+  h14: 1
+  h15: 1
+  h16: 1
+  h17: 1
+  h18: 1
+
+two:
+  name: MyString
+  address: MyString
+  length: 1
+  h1: 1
+  h2: 1
+  h3: 1
+  h4: 1
+  h5: 1
+  h6: 1
+  h7: 1
+  h8: 1
+  h9: 1
+  h10: 1
+  h11: 1
+  h12: 1
+  h13: 1
+  h14: 1
+  h15: 1
+  h16: 1
+  h17: 1
+  h18: 1
