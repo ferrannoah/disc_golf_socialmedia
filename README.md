@@ -2,7 +2,7 @@
 
 Steps to run code:
 1. Clone current git repository.
-2. cd into pepperoni-s22
+2. cd into disc_golf_socialmedia
 3. run bundle install
 4. run bundle update
 5. run yarn install
